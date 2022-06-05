@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './base/Login';
+import AppBase from './base/ApplicationBase';
+import { shallowEqual, useSelector } from 'react-redux';
+import NotFound from './base/PageNotFound';
+
 
 function App() {
+
+  const { isAuthComplete } = useSelector(state => ({
+    isAuthComplete: state.auth.isAuthComplete
+  }),
+    shallowEqual
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={isAuthComplete ? <AppBase /> : <Navigate to="/login" />} />
+        <Route path="/login" element={isAuthComplete ? <Navigate to="/" /> : <Login />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
