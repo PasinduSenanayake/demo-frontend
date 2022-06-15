@@ -66,7 +66,7 @@ function SpellListView(props) {
               <SentimentDissatisfiedIcon style={{ fontSize: '1em', color: '#696969' }} />
             </Box>
             <Box sx={{ fontFamily: 'BlinkMacSystemFont', fontSize: 'h6.fontSize', mx: 1, textAlign: 'center' }}>
-              No {(props.isFav) ? 'Favourite' : ''} Spells Avaiable
+              No {(props.isFav) ? 'Favourite' : ''} Spells Available
             </Box>
           </Typography>
         </ListItem>

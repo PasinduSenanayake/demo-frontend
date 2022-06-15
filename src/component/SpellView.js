@@ -43,8 +43,8 @@ const contentGenerator = (isKeysExisit, isLoading, selectedSpell) => {
                 </Typography>
                 <Divider variant="middle" style={{ paddingBottom: 4 }} />
                 <List style={{ maxHeight: '33rem', overflow: 'auto' }}  >
-                    {dataKeys.map(dataKey => (
-                        <ListItem divider>
+                    {dataKeys.map((dataKey,index) => (
+                        <ListItem key={index} divider>
                             <ListItemAvatar>
                                 <Avatar>
                                     <InfoIcon />
